@@ -1,3 +1,7 @@
+# User data
+config.json
+result.png
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
