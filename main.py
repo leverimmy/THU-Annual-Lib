@@ -116,7 +116,7 @@ if __name__ == "__main__":
                 va='center')
         
     # plt.tight_layout()
-    plt.xlim(0, 1.2 * max(all_data.values()))
+    plt.xlim(0, 1.2 * (1 if len(all_data) == 0 else max(all_data.values())))
     plt.title("华清大学自习情况")
     plt.xlabel("自习次数（次）")
     plt.savefig("result.png")
