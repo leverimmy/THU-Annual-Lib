@@ -21,8 +21,8 @@ if __name__ == "__main__":
             access_token = account["access_token"]
     except Exception as e:
         print("账户信息读取失败，请重新输入")
-        idserial = input("请输入学号: ")
-        servicehall = input("请输入访问令牌: ")
+        userid = input("请输入学号: ")
+        access_token = input("请输入访问令牌: ")
         with open("config.json", "w", encoding='utf-8') as f:
             json.dump({"userid": userid, "access_token": access_token}, f, indent=4)
     
@@ -37,8 +37,10 @@ if __name__ == "__main__":
 
     links = soup.find_all('a')
 
-    max_page = None
+    max_page = 1
     for link in links:
+        if 'class' in link.attrs and 'num' in link['class']:
+            max_page = max(max_page, int(link['href'].split('p/')[1]))
         if 'class' in link.attrs and 'end' in link['class']:
             max_page = int(link['href'].split('p/')[1])
             break
